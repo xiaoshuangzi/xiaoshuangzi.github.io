@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/26/强化学习 马尔科夫决策过程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/26/rl-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小爽子">
@@ -261,7 +261,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/26/强化学习 马尔科夫决策过程/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/06/26/rl-1/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -312,57 +312,15 @@
 
       
         
-          
-            <p>##　强化学习 马尔科夫决策过程</p>
+          <p>##　强化学习 马尔科夫决策过程</p>
 <h3 id="马尔科夫过程"><a href="#马尔科夫过程" class="headerlink" title="马尔科夫过程"></a>马尔科夫过程</h3><p>当前状态仅与前一时刻状态有关<br>$$<br>P_{ss’} = P[S_{t+1}=s’|S_t=s]<br>$$<br>马尔科夫过程又叫马尔科夫链，用一个元组$&lt;S,P&gt;$表示，S是有限的状态集，P是状态转移概率矩阵</p>
-<h3 id="马尔科夫奖励过程"><a href="#马尔科夫奖励过程" class="headerlink" title="马尔科夫奖励过程"></a>马尔科夫奖励过程</h3><p>在马尔科夫过程的基础上增加了奖励R和衰减系数 $\gamma$ ：$&lt;S, P, R, \gamma&gt;$。R是一个奖励函数，S状态下的奖励是某一时刻t处在状态s下的下一个时刻能获得的奖励期望：<br>$$<br>R_s = E[R_{t+1}|S_t = s]<br>$$</p>
-<ul>
-<li>收获</li>
-</ul>
-<p>定义：收获$G_t$ 为在一个马尔科夫奖励链上从t时刻开始往后所有的奖励的有衰减的总和<br>$$<br>G_t = R_{t+1} + \gamma R_{t+2} + … = \sum_{k=0}^\infty  \gamma^kR_{t+k+1}<br>$$</p>
-<ul>
-<li>价值函数</li>
-</ul>
-<p>定义：一个马尔科夫奖励过程中某一状态的价值函数从该状态开始的马尔科夫链收获的期望<br>$$<br>v(s) =E[G_t|S_t = s]<br>$$</p>
-<ul>
-<li>价值函数的推导 –Bellman方程</li>
-</ul>
-<p>先尝试用价值的定义公式来推导：<br>$$<br>\begin{aligned}<br>v(s)&amp;=E[G_t|S_t=s]\<br>     &amp; =E[R_{t+1}+\gamma G_{t+1}|S_t=s]\<br>     &amp; =E[R_{t+1}+\gamma v(S_{t+1})|S_t=s]<br> \end{aligned}<br>$$<br>用s’表示s状态下一时刻任一可能的状态<br>$$<br>v(s) = R_s + \gamma\sum_{s’\in S}P_{ss’}v(s’)<br>$$</p>
-<ul>
-<li><p>Bellman方程的矩阵形式和求解<br>$$<br>v=R+\gamma Pv<br>$$</p>
-<p>$$<br>\left[<br>\begin{matrix}<br>v(1)\<br>\vdots \<br>v(n)\<br>\end{matrix}<br>\right]=<br>\left[<br>\begin{matrix}<br>R_1 \<br>\vdots\<br>R_n \<br>\end{matrix}<br>\right]+\gamma<br>\left[<br>\begin{matrix}<br>P_{11}  \quad\cdots\quad P_{1n} \<br>\vdots\<br>p_{n1}\quad\cdots\quad p_{nn}\<br>\end{matrix}<br>\right]<br>\left[<br>\begin{matrix}<br>v(1)\<br>\vdots\<br>v(n)\<br>\end{matrix}<br>\right]<br>$$</p>
-</li>
-</ul>
-<h3 id="马尔科夫决策过程"><a href="#马尔科夫决策过程" class="headerlink" title="马尔科夫决策过程"></a>马尔科夫决策过程</h3><p>相较于马尔科夫奖励过程，马尔科夫决定过程多了一个行为集合A，它是这样的一个元组$&lt;S,A,P,R,\gamma&gt;$<br>$$<br>P_{ss’}^a=P[S_{t+1}=s’|S_t=s,A_t=a]<br>$$</p>
-<p>$$<br>R_s^a=E[R_{t+1}|S_t=s,A_t=a]<br>$$</p>
-<ul>
-<li><p>策略</p>
-<p>策略$\pi$ 是概率的集合或分布，其元素$\pi(a|s)$为对过程中的某一状态s采取可能的行为a的概率<br>$$<br>\pi (a|s) = P[A_t=a|S_t=s]<br>$$</p>
-</li>
-</ul>
-<p>$$<br>P_{s,s’}^\pi=\sum_{a \in A}\pi (a|s)P_{ss’}^a<br>$$</p>
-<p>$$<br>R_s^\pi =\sum_{a \in A}\pi(a|s)R_s^a<br>$$</p>
-<ul>
-<li><p>基于策略$\pi$ 的价值函数<br>$$<br>v_\pi(s)=E_\pi[G_t|S_t = s]<br>$$</p>
-<p>$$<br>q_\pi(s,a)=E_\pi[G_t|s_t=s,A_t=a]<br>$$</p>
-<p>$v_\pi(s)$是MDP下的基于策略$\pi$的状态价值函数</p>
-<p>$q_\pi(s,a)$是行为价值函数，表示在执行策略$\pi$时，对当前状态s执行某一具体行为a所能得到的收获的期望</p>
-</li>
-</ul>
-<ul>
-<li>bellman期望方程，推导后，得到：</li>
-</ul>
-<p>$$<br>v_\pi(s)=\sum_{a\in A}\pi(a|s)q_\pi(s,a)<br>$$</p>
-<p>$$<br>q_\pi(s,a)=R_s^a+\gamma\sum_{s’\in S}P_{ss’}^av_\pi(s’)<br>$$</p>
-<ul>
-<li><p>最优价值函数</p>
-<p>最优状态价值函数$v_*(s)$指的是在从所有策略产生的状态价值函数中，选取使状态s价值最大的函数，同</p>
-<p>最优行为价值函数$q_*(s,a)$</p>
-<p>最有价值函数明确了MDP的最优可能表现，当我们知道了最优价值函数，也就知道了每个状态的最有价值，这时便认为这个MDP获得了解决。</p>
-</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/26/rl-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
