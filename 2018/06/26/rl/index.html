@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="##　强化学习 马尔科夫决策过程 马尔科夫过程当前状态仅与前一时刻状态有关$$P_{ss’} = P[S_{t+1}=s’|S_t=s]$$马尔科夫过程又叫马尔科夫链，用一个元组$&amp;lt;S,P&amp;gt;$表示，S是有限的状态集，P是状态转移概率矩阵">
+<meta name="description" content="强化学习 马尔科夫决策过程马尔科夫过程当前状态仅与前一时刻状态有关  P_{ss&apos;} = P[S_{t+1}=s&apos;|S_t=s]马尔科夫过程又叫马尔科夫链，用一个元组$$表示，S是有限的状态集，P是状态转移概率矩阵">
 <meta name="keywords" content="reinforce learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="强化学习系列-马尔科夫过程">
 <meta property="og:url" content="http://yoursite.com/2018/06/26/rl/index.html">
 <meta property="og:site_name" content="小爽子的blog">
-<meta property="og:description" content="##　强化学习 马尔科夫决策过程 马尔科夫过程当前状态仅与前一时刻状态有关$$P_{ss’} = P[S_{t+1}=s’|S_t=s]$$马尔科夫过程又叫马尔科夫链，用一个元组$&amp;lt;S,P&amp;gt;$表示，S是有限的状态集，P是状态转移概率矩阵">
+<meta property="og:description" content="强化学习 马尔科夫决策过程马尔科夫过程当前状态仅与前一时刻状态有关  P_{ss&apos;} = P[S_{t+1}=s&apos;|S_t=s]马尔科夫过程又叫马尔科夫链，用一个元组$$表示，S是有限的状态集，P是状态转移概率矩阵">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-06-26T09:09:46.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="强化学习系列-马尔科夫过程">
-<meta name="twitter:description" content="##　强化学习 马尔科夫决策过程 马尔科夫过程当前状态仅与前一时刻状态有关$$P_{ss’} = P[S_{t+1}=s’|S_t=s]$$马尔科夫过程又叫马尔科夫链，用一个元组$&amp;lt;S,P&amp;gt;$表示，S是有限的状态集，P是状态转移概率矩阵">
+<meta name="twitter:description" content="强化学习 马尔科夫决策过程马尔科夫过程当前状态仅与前一时刻状态有关  P_{ss&apos;} = P[S_{t+1}=s&apos;|S_t=s]马尔科夫过程又叫马尔科夫链，用一个元组$$表示，S是有限的状态集，P是状态转移概率矩阵">
 
 
 
@@ -332,50 +332,93 @@
       
 
       
-        <p><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"><br></script></p>
-<p>##　强化学习 马尔科夫决策过程</p>
-<h3 id="马尔科夫过程"><a href="#马尔科夫过程" class="headerlink" title="马尔科夫过程"></a>马尔科夫过程</h3><p>当前状态仅与前一时刻状态有关<br>$$<br>P_{ss’} = P[S_{t+1}=s’|S_t=s]<br>$$<br>马尔科夫过程又叫马尔科夫链，用一个元组$&lt;S,P&gt;$表示，S是有限的状态集，P是状态转移概率矩阵</p>
+        <p><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script></p>
+<h2 id="强化学习-马尔科夫决策过程"><a href="#强化学习-马尔科夫决策过程" class="headerlink" title="　强化学习 马尔科夫决策过程"></a>　强化学习 马尔科夫决策过程</h2><h3 id="马尔科夫过程"><a href="#马尔科夫过程" class="headerlink" title="马尔科夫过程"></a>马尔科夫过程</h3><p>当前状态仅与前一时刻状态有关</p>
+<script type="math/tex; mode=display">
+P_{ss'} = P[S_{t+1}=s'|S_t=s]</script><p>马尔科夫过程又叫马尔科夫链，用一个元组$<s,p>$表示，S是有限的状态集，P是状态转移概率矩阵</s,p></p>
 <a id="more"></a>
-<h3 id="马尔科夫奖励过程"><a href="#马尔科夫奖励过程" class="headerlink" title="马尔科夫奖励过程"></a>马尔科夫奖励过程</h3><p>在马尔科夫过程的基础上增加了奖励R和衰减系数 $\gamma$ ：$&lt;S, P, R, \gamma&gt;$。R是一个奖励函数，S状态下的奖励是某一时刻t处在状态s下的下一个时刻能获得的奖励期望：<br>$$<br>R_s = E[R_{t+1}|S_t = s]<br>$$</p>
-<ul>
+<h3 id="马尔科夫奖励过程"><a href="#马尔科夫奖励过程" class="headerlink" title="马尔科夫奖励过程"></a>马尔科夫奖励过程</h3><p>在马尔科夫过程的基础上增加了奖励R和衰减系数 $\gamma$ ：$<s, p,="" r,="" \gamma="">$。R是一个奖励函数，S状态下的奖励是某一时刻t处在状态s下的下一个时刻能获得的奖励期望：</s,></p>
+<script type="math/tex; mode=display">
+R_s = E[R_{t+1}|S_t = s]</script><ul>
 <li>收获</li>
 </ul>
-<p>定义：收获$G_t$ 为在一个马尔科夫奖励链上从t时刻开始往后所有的奖励的有衰减的总和<br>$$<br>G_t = R_{t+1} + \gamma R_{t+2} + … = \sum_{k=0}^\infty  \gamma^kR_{t+k+1}<br>$$</p>
-<ul>
+<p>定义：收获$G_t$ 为在一个马尔科夫奖励链上从t时刻开始往后所有的奖励的有衰减的总和</p>
+<script type="math/tex; mode=display">
+G_t = R_{t+1} + \gamma R_{t+2} + ... = \sum_{k=0}^\infty  \gamma^kR_{t+k+1}</script><ul>
 <li>价值函数</li>
 </ul>
-<p>定义：一个马尔科夫奖励过程中某一状态的价值函数从该状态开始的马尔科夫链收获的期望<br>$$<br>v(s) =E[G_t|S_t = s]<br>$$</p>
-<ul>
-<li>价值函数的推导 –Bellman方程</li>
+<p>定义：一个马尔科夫奖励过程中某一状态的价值函数从该状态开始的马尔科夫链收获的期望</p>
+<script type="math/tex; mode=display">
+v(s) =E[G_t|S_t = s]</script><ul>
+<li>价值函数的推导 —Bellman方程</li>
 </ul>
-<p>先尝试用价值的定义公式来推导：<br>$$<br>\begin{aligned}<br>v(s)&amp;=E[G_t|S_t=s]\<br>     &amp; =E[R_{t+1}+\gamma G_{t+1}|S_t=s]\<br>     &amp; =E[R_{t+1}+\gamma v(S_{t+1})|S_t=s]<br> \end{aligned}<br>$$<br>用s’表示s状态下一时刻任一可能的状态<br>$$<br>v(s) = R_s + \gamma\sum_{s’\in S}P_{ss’}v(s’)<br>$$</p>
-<ul>
-<li><p>Bellman方程的矩阵形式和求解<br>$$<br>v=R+\gamma Pv<br>$$</p>
-<p>$$<br>\left[<br>\begin{matrix}<br>v(1)\<br>\vdots \<br>v(n)\<br>\end{matrix}<br>\right]=<br>\left[<br>\begin{matrix}<br>R_1 \<br>\vdots\<br>R_n \<br>\end{matrix}<br>\right]+\gamma<br>\left[<br>\begin{matrix}<br>P_{11}  \quad\cdots\quad P_{1n} \<br>\vdots\<br>p_{n1}\quad\cdots\quad p_{nn}\<br>\end{matrix}<br>\right]<br>\left[<br>\begin{matrix}<br>v(1)\<br>\vdots\<br>v(n)\<br>\end{matrix}<br>\right]<br>$$</p>
-</li>
+<p>先尝试用价值的定义公式来推导：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v(s)&=E[G_t|S_t=s]\\
+     & =E[R_{t+1}+\gamma G_{t+1}|S_t=s]\\
+     & =E[R_{t+1}+\gamma v(S_{t+1})|S_t=s]
+ \end{aligned}</script><p>用s’表示s状态下一时刻任一可能的状态</p>
+<script type="math/tex; mode=display">
+v(s) = R_s + \gamma\sum_{s'\in S}P_{ss'}v(s')</script><ul>
+<li><p>Bellman方程的矩阵形式和求解</p>
+<script type="math/tex; mode=display">
+v=R+\gamma Pv</script><script type="math/tex; mode=display">
+\left[
+\begin{matrix}
+v(1)\\
+\vdots \\
+v(n)\\
+\end{matrix}
+\right]=
+\left[
+\begin{matrix}
+R_1 \\
+\vdots\\
+R_n \\
+\end{matrix}
+\right]+\gamma
+\left[
+\begin{matrix}
+P_{11}  \quad\cdots\quad P_{1n} \\
+\vdots\\
+p_{n1}\quad\cdots\quad p_{nn}\\
+\end{matrix}
+\right]
+\left[
+\begin{matrix}
+v(1)\\
+\vdots\\
+v(n)\\
+\end{matrix}
+\right]</script></li>
 </ul>
-<h3 id="马尔科夫决策过程"><a href="#马尔科夫决策过程" class="headerlink" title="马尔科夫决策过程"></a>马尔科夫决策过程</h3><p>相较于马尔科夫奖励过程，马尔科夫决定过程多了一个行为集合A，它是这样的一个元组$&lt;S,A,P,R,\gamma&gt;$<br>$$<br>P_{ss’}^a=P[S_{t+1}=s’|S_t=s,A_t=a]<br>$$</p>
-<p>$$<br>R_s^a=E[R_{t+1}|S_t=s,A_t=a]<br>$$</p>
-<ul>
+<h3 id="马尔科夫决策过程"><a href="#马尔科夫决策过程" class="headerlink" title="马尔科夫决策过程"></a>马尔科夫决策过程</h3><p>相较于马尔科夫奖励过程，马尔科夫决定过程多了一个行为集合A，它是这样的一个元组$<s,a,p,r,\gamma>$</s,a,p,r,\gamma></p>
+<script type="math/tex; mode=display">
+P_{ss'}^a=P[S_{t+1}=s'|S_t=s,A_t=a]</script><script type="math/tex; mode=display">
+R_s^a=E[R_{t+1}|S_t=s,A_t=a]</script><ul>
 <li><p>策略</p>
-<p>策略$\pi$ 是概率的集合或分布，其元素$\pi(a|s)$为对过程中的某一状态s采取可能的行为a的概率<br>$$<br>\pi (a|s) = P[A_t=a|S_t=s]<br>$$</p>
-</li>
+<p>策略$\pi$ 是概率的集合或分布，其元素$\pi(a|s)$为对过程中的某一状态s采取可能的行为a的概率</p>
+<script type="math/tex; mode=display">
+\pi (a|s) = P[A_t=a|S_t=s]</script></li>
 </ul>
-<p>$$<br>P_{s,s’}^\pi=\sum_{a \in A}\pi (a|s)P_{ss’}^a<br>$$</p>
-<p>$$<br>R_s^\pi =\sum_{a \in A}\pi(a|s)R_s^a<br>$$</p>
-<ul>
-<li><p>基于策略$\pi$ 的价值函数<br>$$<br>v_\pi(s)=E_\pi[G_t|S_t = s]<br>$$</p>
-<p>$$<br>q_\pi(s,a)=E_\pi[G_t|s_t=s,A_t=a]<br>$$</p>
-<p>$v_\pi(s)$是MDP下的基于策略$\pi$的状态价值函数</p>
+<script type="math/tex; mode=display">
+P_{s,s'}^\pi=\sum_{a \in A}\pi (a|s)P_{ss'}^a</script><script type="math/tex; mode=display">
+R_s^\pi =\sum_{a \in A}\pi(a|s)R_s^a</script><ul>
+<li><p>基于策略$\pi$ 的价值函数</p>
+<script type="math/tex; mode=display">
+v_\pi(s)=E_\pi[G_t|S_t = s]</script><script type="math/tex; mode=display">
+q_\pi(s,a)=E_\pi[G_t|s_t=s,A_t=a]</script><p>$v_\pi(s)$是MDP下的基于策略$\pi$的状态价值函数</p>
 <p>$q_\pi(s,a)$是行为价值函数，表示在执行策略$\pi$时，对当前状态s执行某一具体行为a所能得到的收获的期望</p>
 </li>
 </ul>
 <ul>
 <li>bellman期望方程，推导后，得到：</li>
 </ul>
-<p>$$<br>v_\pi(s)=\sum_{a\in A}\pi(a|s)q_\pi(s,a)<br>$$</p>
-<p>$$<br>q_\pi(s,a)=R_s^a+\gamma\sum_{s’\in S}P_{ss’}^av_\pi(s’)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+v_\pi(s)=\sum_{a\in A}\pi(a|s)q_\pi(s,a)</script><script type="math/tex; mode=display">
+q_\pi(s,a)=R_s^a+\gamma\sum_{s'\in S}P_{ss'}^av_\pi(s')</script><ul>
 <li><p>最优价值函数</p>
 <p>最优状态价值函数$v_*(s)$指的是在从所有策略产生的状态价值函数中，选取使状态s价值最大的函数，同</p>
 <p>最优行为价值函数$q_*(s,a)$</p>
@@ -556,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔科夫过程"><span class="nav-number">1.</span> <span class="nav-text">马尔科夫过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔科夫奖励过程"><span class="nav-number">2.</span> <span class="nav-text">马尔科夫奖励过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔科夫决策过程"><span class="nav-number">3.</span> <span class="nav-text">马尔科夫决策过程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习-马尔科夫决策过程"><span class="nav-number">1.</span> <span class="nav-text">　强化学习 马尔科夫决策过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔科夫过程"><span class="nav-number">1.1.</span> <span class="nav-text">马尔科夫过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔科夫奖励过程"><span class="nav-number">1.2.</span> <span class="nav-text">马尔科夫奖励过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔科夫决策过程"><span class="nav-number">1.3.</span> <span class="nav-text">马尔科夫决策过程</span></a></li></ol></li></ol></div>
             
 
           </div>
